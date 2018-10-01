@@ -1,10 +1,11 @@
 import pymysql
+import sqlite3
 
 # This file contains the method used to read in the data from the SQLite file.
-
+# Gi database: db = pymysql.connect(host="37.128.146.217", port=3306, user="knar", password="knarknar", db="betting_with_knar")
 # Read in Data from table, row
 def read_data(table, row):
-    db = pymysql.connect(host="37.128.146.217", port=3306, user="knar", password="knarknar", db="betting_with_knar")
+    db = sqlite3.connect("database.sqlite")
     cursor = db.cursor()
     cursor.execute("SELECT " + row + " FROM " + table)
     return cursor.fetchall()
